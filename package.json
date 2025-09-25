@@ -1,0 +1,30 @@
+{
+  "name": "portfolio_site",
+  "version": "1.0.0",
+  "main": "projects.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ceyhunbaskoc/Portfolio-Site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ceyhunbaskoc/Portfolio-Site/issues"
+  },
+  "homepage": "https://github.com/ceyhunbaskoc/Portfolio-Site#readme",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^11.3.2",
+    "marked": "^16.3.0",
+    "multer": "^2.0.2",
+    "path": "^0.12.7"
+  },
+  "description": ""
+}

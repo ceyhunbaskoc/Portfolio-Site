@@ -1,10 +1,12 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap');
 /* Arkaplan her yerde geçerli */
 body {
   background-image: url("../img/project1/bg.png");
-  background-repeat: repeat-y;       /* Y ekseninde tekrar et */
-  background-position: top center;   /* Ortadan hizala */
-  background-size: 100% auto;        /* Genişliği tamamen kapla, yüksekliği otomatik */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-repeat: repeat-y;
+  background-position: top center;
+  background-size: 100% auto;
+  font-family: 'Anonymous Pro', monospace; /* Burayı değiştirdik */
   color: #fff;
 }
 
@@ -121,4 +123,20 @@ body {
   .project-header p.lead {
     font-size: 1rem;
   }
+}
+/* Navbar Neon Effect */
+.navbar-brand {
+    font-family: 'Arial', sans-serif; /* Neon font */
+    color: #fff;
+    text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+    animation: neonGlow 1.5s infinite alternate;
+}
+
+@keyframes neonGlow {
+    0% {
+        text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+    }
+    100% {
+        text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 40px #00d4ff, 0 0 80px #00d4ff, 0 0 160px #00d4ff;
+    }
 }

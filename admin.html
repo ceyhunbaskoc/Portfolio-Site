@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | Projeler</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #121212; color: #fff; }
+  </style>
+</head>
+<body>
+
+<div class="container py-5">
+  <h2>Proje Ekle</h2>
+
+  <div class="mb-3">
+    <label>Proje Başlığı:</label>
+    <input type="text" class="form-control" id="title">
+  </div>
+
+  <div class="mb-3">
+    <label>Kısa Açıklama:</label>
+    <textarea class="form-control" id="shortDesc"></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label>Uzun Açıklama (Markdown):</label>
+    <textarea class="form-control" id="longDesc" rows="6"></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label>Detay Sayfa HTML Adı:</label>
+    <input type="text" class="form-control" id="htmlFile" placeholder="project1.html">
+  </div>
+
+  <div class="mb-3">
+    <label>GitHub Linki:</label>
+    <input type="text" class="form-control" id="github">
+  </div>
+
+  <div class="mb-3">
+    <label>Itch.io Linki:</label>
+    <input type="text" class="form-control" id="itch">
+  </div>
+
+  <div class="mb-3">
+    <label>Proje Resmi:</label>
+    <input type="file" class="form-control" id="image">
+  </div>
+
+  <button id="addProjectBtn" class="btn btn-success">Ekle</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+document.getElementById('addProjectBtn').addEventListener('click', async () => {
+    const title = document.getElementById('title').value;
+    const shortDesc = document.getElementById('shortDesc').value;
+    const longDesc = document.getElementById('longDesc').value;
+    const htmlFile = document.getElementById('htmlFile').value;
+    const github = document.getElementById('github').value;
+    const itch = document.getElementById('itch').value;
+    const imageInput = document.getElementById('image');
+    const file = imageInput.files[0];
+
+    if(!file) return alert('Resim seçmelisiniz!');
+
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('shortDesc', shortDesc);
+    formData.append('longDesc', longDesc);
+    formData.append('htmlFile', htmlFile);
+    formData.append('github', github);
+    formData.append('itch', itch);
+    formData.append('image', file);
+
+    try {
+        const res = await fetch('/add-project', { method: 'POST', body: formData });
+        const data = await res.json();
+        if(data.success) alert('Proje eklendi!');
+        else alert('Hata oluştu.');
+    } catch(err) {
+        alert('Sunucu hatası: ' + err.message);
+    }
+});
+</script>
+
+</body>
+</html>

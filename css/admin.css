@@ -1,0 +1,58 @@
+/* admin.css */
+
+/* Genel body ayarları */
+body {
+    background-color: #121212;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container başlığı */
+h2 {
+    margin-bottom: 30px;
+    color: #d633ff;
+}
+
+/* Input ve textarea */
+input.form-control,
+textarea.form-control {
+    background-color: #1e1e1e;
+    color: #fff;
+    border: 1px solid #333;
+}
+
+input.form-control:focus,
+textarea.form-control:focus {
+    background-color: #2a2a2a;
+    color: #fff;
+    border-color: #d633ff;
+    box-shadow: none;
+}
+
+/* Label’ler */
+label {
+    font-weight: 500;
+}
+
+/* Button */
+.btn-success {
+    background-color: #d633ff;
+    border-color: #d633ff;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #ec00ff;
+    border-color: #ec00ff;
+}
+
+/* File input */
+input[type="file"] {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+/* Responsive container */
+.container {
+    max-width: 700px;
+}
