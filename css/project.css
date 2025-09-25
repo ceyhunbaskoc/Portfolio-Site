@@ -1,0 +1,124 @@
+/* Arkaplan her yerde geçerli */
+body {
+  background-image: url("../img/project1/bg.png");
+  background-repeat: repeat-y;       /* Y ekseninde tekrar et */
+  background-position: top center;   /* Ortadan hizala */
+  background-size: 100% auto;        /* Genişliği tamamen kapla, yüksekliği otomatik */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+}
+
+/* Navbar (projects sayfasıyla aynı görünüm) */
+.custom-navbar {
+  background: rgba(0, 0, 0, 0.9);
+  padding: 15px 0;
+}
+.custom-navbar .nav-link {
+  color: #fff;
+  margin-left: 15px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-link.active {
+  color: #d633ff;
+}
+
+/* Üst kısım */
+.project-header {
+  min-height: 50vh;
+  padding-top: 80px;
+}
+.project-cover {
+  max-width: 100%;
+  width: 250px; /* Daha küçük, daha kontrollü boyut */
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border: 5px solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+  margin-bottom: 20px;
+}
+
+/* Üst kısım metinleri */
+.project-header h1{
+    color: #d633ff;
+    font-size: 2.5rem;
+}
+.project-header p.lead {
+    font-size: 1.2rem;
+}
+
+/* Butonlar */
+.btn-outline-light {
+  border-width: 2px;
+  transition: all 0.3s;
+}
+.btn-outline-light:hover {
+  background-color: #d633ff;
+  color: #fff;
+  border-color: #d633ff;
+}
+
+/* İçerik */
+.project-content {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.project-content h2, 
+.project-content h3 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+.project-content h2 {
+  color: #d633ff;
+  font-size: 2rem;
+  border-bottom: 2px solid #d633ff;
+  padding-bottom: 5px;
+}
+.project-content h3{
+    color: #ecdd00;
+    font-size: 1.5rem;
+}
+
+/* Paragraflar */
+.project-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Listeler */
+.project-content ul, .project-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+/* Screenshots */
+.project-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  margin-bottom: 20px;
+}
+
+/* Responsive grid için container img */
+@media (min-width: 768px) {
+  .project-content img {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 576px) {
+  .project-cover {
+    width: 180px;
+  }
+  .project-header h1 {
+    font-size: 2rem;
+  }
+  .project-header p.lead {
+    font-size: 1rem;
+  }
+}

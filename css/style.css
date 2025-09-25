@@ -1,0 +1,59 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* Navbar */
+.custom-navbar {
+  background: rgba(0, 0, 0, 0.85);
+  padding: 15px 0;
+}
+.custom-navbar .nav-link {
+  color: #fff;
+  margin-left: 15px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-link.active {
+  color: #d633ff;
+}
+
+/* Hero */
+.hero {
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+              url("../img/mainPage/me.jpg") center/cover no-repeat;
+}
+.hero h1, .hero p {
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+}
+
+/* Gradient Button */
+.btn-gradient {
+  background: linear-gradient(90deg, #d633ff, #6f42c1);
+  color: white;
+  border: none;
+  transition: opacity 0.3s;
+}
+.btn-gradient:hover {
+  opacity: 0.85;
+  color: #fff;
+}
+
+/* About */
+#about ul {
+  list-style: none;
+  padding: 0;
+}
+#about ul li::before {
+  content: "✔ ";
+  color: #6f42c1;
+}
+
+/* Contact */
+.contact-section {
+  background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+              url("../img/contact-bg.jpg") center/cover no-repeat;
+}
