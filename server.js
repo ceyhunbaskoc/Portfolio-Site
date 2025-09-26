@@ -23,6 +23,11 @@ app.use(express.static(__dirname));
 
 const projectsFile = path.join(__dirname, 'projects.json');
 
+// Ana sayfa route'u - html/index.html'i serve et
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'html', 'index.html'));
+});
+
 app.post('/add-project', upload.single('image'), (req, res) => {
     const { title, shortDesc, longDesc, htmlFile, github, itch } = req.body;
     const imageBuffer = req.file ? req.file.buffer : null;
