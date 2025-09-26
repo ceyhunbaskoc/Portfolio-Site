@@ -1,11 +1,17 @@
-const express = require('express');
-const multer = require('multer');
-const fs = require('fs');
-const path = require('path');
-const { marked } = require('marked');
+import express from 'express';
+import multer from 'multer';
+import fs from 'fs';
+import path from 'path';
+import { marked } from 'marked';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+// ES modules'te __dirname yoktur, bu yüzden oluşturmamız gerekir
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Multer ile dosya yükleme
 const storage = multer.memoryStorage();
@@ -54,7 +60,6 @@ app.post('/add-project', upload.single('image'), (req, res) => {
         fs.mkdirSync(htmlDir);
     }
     fs.writeFileSync(path.join(htmlDir, htmlFile), template, 'utf-8');
-
 
     // projects.json güncelle
     let projects = [];
