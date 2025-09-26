@@ -6,7 +6,7 @@ import { marked } from 'marked';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
-// ES modules'te __dirname yoktur, bu yüzden oluşturmamız gerekir
+// ES modules'te __dirname yoktur
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -19,15 +19,37 @@ const upload = multer({ storage: storage });
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(__dirname));
+
+// Static klasörler
+app.use(express.static(path.join(__dirname))); // tüm dosyaları root'tan serve et
+app.use('/css', express.static(path.join(__dirname, 'css')));
+app.use('/img', express.static(path.join(__dirname, 'img')));
+app.use('/video', express.static(path.join(__dirname, 'video')));
+app.use('/html', express.static(path.join(__dirname, 'html')));
 
 const projectsFile = path.join(__dirname, 'projects.json');
 
-// Ana sayfa route'u - html/index.html'i serve et
+// Ana sayfa
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'html', 'index.html'));
 });
 
+// Projects.html
+app.get('/projects.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'projects.html'));
+});
+
+// Dinamik HTML serve (nightclaw veya diğer projeler)
+app.get('/:htmlFile', (req, res) => {
+    const filePath = path.join(__dirname, req.params.htmlFile);
+    if (fs.existsSync(filePath)) {
+        res.sendFile(filePath);
+    } else {
+        res.status(404).send('Not Found');
+    }
+});
+
+// Proje ekleme
 app.post('/add-project', upload.single('image'), (req, res) => {
     const { title, shortDesc, longDesc, htmlFile, github, itch } = req.body;
     const imageBuffer = req.file ? req.file.buffer : null;
@@ -42,6 +64,7 @@ app.post('/add-project', upload.single('image'), (req, res) => {
         fs.writeFileSync(imagePath, imageBuffer);
     }
 
+    // Project template
     let template = fs.readFileSync(path.join(__dirname, 'html/project-template.html'), 'utf-8');
 
     const githubButton = github
@@ -75,8 +98,8 @@ app.post('/add-project', upload.single('image'), (req, res) => {
         title,
         shortDesc,
         longDesc,
-        image: `img/projects/${imageName}`,
-        htmlFile: `html/${htmlFile}`,
+        image: `/img/projects/${imageName}`,
+        htmlFile: `/${htmlFile}`, // root path
         github,
         itch
     });
