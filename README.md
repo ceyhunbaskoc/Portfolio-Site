@@ -1,1 +1,1 @@
-[Site linki](ceyhunbaskoc.com)  __(ceyhunbaskoc.com)__
+[Site linki]([ceyhunbaskoc.com](https://ceyhunbaskoc.com/))  __(ceyhunbaskoc.com)__
