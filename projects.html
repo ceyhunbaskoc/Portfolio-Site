@@ -32,21 +32,34 @@
 <footer class="footer bg-dark text-white text-center p-4">
   <p>© 2025 | Ceyhun Başkoç | 📞 +90 534 276 30 13 | 2311012012</p>
 </footer>
+<div class="row g-4" id="projects-container"></div>
 
 <script>
 async function loadProjects() {
-  const res = await fetch('projects.json');
-  const projects = await res.json();
-  const container = document.getElementById('projects-container');
-  container.innerHTML = '';
+  try {
+    const res = await fetch('/projects.json'); // root path
+    const projects = await res.json();
+    const container = document.getElementById('projects-container');
+    container.innerHTML = '';
 
-  projects.forEach(proj => {
-  const col = document.createElement('div');
-  col.innerHTML = `
-    <img src="${proj.image}" alt="${proj.title}">
-    <a href="${proj.htmlFile}">Details</a>
-  `;
-});
+    projects.forEach(proj => {
+      const col = document.createElement('div');
+      col.className = 'col-md-4';
+      col.innerHTML = `
+        <div class="card shadow h-100">
+          <img src="${proj.image}" class="card-img-top" alt="${proj.title}">
+          <div class="card-body">
+            <h5 class="card-title">${proj.title}</h5>
+            <p class="card-text">${proj.shortDesc}</p>
+            <a href="${proj.htmlFile}" class="btn btn-gradient">Details</a>
+          </div>
+        </div>
+      `;
+      container.appendChild(col);
+    });
+  } catch(err) {
+    console.error('Projects yüklenemedi:', err);
+  }
 }
 
 loadProjects();
