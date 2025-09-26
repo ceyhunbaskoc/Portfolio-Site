@@ -19,13 +19,58 @@ const upload = multer({ storage: storage });
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Static dosyalar için middleware - Vercel için düzeltildi
+app.use('/css', express.static(path.join(__dirname, 'css')));
+app.use('/js', express.static(path.join(__dirname, 'js')));
+app.use('/img', express.static(path.join(__dirname, 'img')));
+app.use('/video', express.static(path.join(__dirname, 'video')));
 app.use(express.static(__dirname));
 
 const projectsFile = path.join(__dirname, 'projects.json');
 
 // Ana sayfa route'u - html/index.html'i serve et
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'html', 'index.html'));
+    const indexPath = path.join(__dirname, 'html', 'index.html');
+    if (fs.existsSync(indexPath)) {
+        res.sendFile(indexPath);
+    } else {
+        res.status(404).send('index.html not found');
+    }
+});
+
+// HTML dosyaları için genel route
+app.get('/*.html', (req, res) => {
+    const fileName = req.params[0] + '.html';
+    const filePath = path.join(__dirname, 'html', fileName);
+    
+    if (fs.existsSync(filePath)) {
+        res.sendFile(filePath);
+    } else {
+        res.status(404).send(`${fileName} not found`);
+    }
+});
+
+// Direkt HTML klasöründeki dosyalara erişim
+app.get('/html/:filename', (req, res) => {
+    const fileName = req.params.filename;
+    const filePath = path.join(__dirname, 'html', fileName);
+    
+    if (fs.existsSync(filePath)) {
+        res.sendFile(filePath);
+    } else {
+        res.status(404).send(`${fileName} not found in html directory`);
+    }
+});
+
+// Projects.html için özel route (eğer root'ta çağrılırsa)
+app.get('/projects.html', (req, res) => {
+    const projectsPath = path.join(__dirname, 'html', 'projects.html');
+    if (fs.existsSync(projectsPath)) {
+        res.sendFile(projectsPath);
+    } else {
+        res.status(404).send('projects.html not found');
+    }
 });
 
 app.post('/add-project', upload.single('image'), (req, res) => {
@@ -38,11 +83,20 @@ app.post('/add-project', upload.single('image'), (req, res) => {
 
     // Resim kaydet
     if (imageBuffer) {
-        const imagePath = path.join(__dirname, 'img/projects', imageName);
+        const projectsDir = path.join(__dirname, 'img/projects');
+        if (!fs.existsSync(projectsDir)) {
+            fs.mkdirSync(projectsDir, { recursive: true });
+        }
+        const imagePath = path.join(projectsDir, imageName);
         fs.writeFileSync(imagePath, imageBuffer);
     }
 
-    let template = fs.readFileSync(path.join(__dirname, 'html/project-template.html'), 'utf-8');
+    const templatePath = path.join(__dirname, 'html/project-template.html');
+    if (!fs.existsSync(templatePath)) {
+        return res.status(500).json({ error: 'project-template.html not found' });
+    }
+
+    let template = fs.readFileSync(templatePath, 'utf-8');
 
     const githubButton = github
         ? `<a href="${github}" target="_blank" class="btn btn-dark me-2">GitHub</a>`
@@ -62,7 +116,7 @@ app.post('/add-project', upload.single('image'), (req, res) => {
 
     const htmlDir = path.join(__dirname, 'html');
     if (!fs.existsSync(htmlDir)) {
-        fs.mkdirSync(htmlDir);
+        fs.mkdirSync(htmlDir, { recursive: true });
     }
     fs.writeFileSync(path.join(htmlDir, htmlFile), template, 'utf-8');
 
@@ -85,4 +139,9 @@ app.post('/add-project', upload.single('image'), (req, res) => {
     res.json({ success: true });
 });
 
-app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}/html/index.html`));
+// 404 handler
+app.use((req, res) => {
+    res.status(404).send('Page not found');
+});
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
