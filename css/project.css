@@ -6,11 +6,10 @@ body {
   background-repeat: repeat-y;
   background-position: top center;
   background-size: 100% auto;
-  font-family: 'Anonymous Pro', monospace; /* Burayı değiştirdik */
+  font-family: 'Anonymous Pro', monospace;
   color: #fff;
 }
 
-/* Navbar (projects sayfasıyla aynı görünüm) */
 .custom-navbar {
   background: rgba(0, 0, 0, 0.9);
   padding: 15px 0;
@@ -43,7 +42,6 @@ body {
   margin-bottom: 20px;
 }
 
-/* Üst kısım metinleri */
 .project-header h1{
     color: #d633ff;
     font-size: 2.5rem;
@@ -52,7 +50,6 @@ body {
     font-size: 1.2rem;
 }
 
-/* Butonlar */
 .btn-outline-light {
   border-width: 2px;
   transition: all 0.3s;
@@ -63,7 +60,6 @@ body {
   border-color: #d633ff;
 }
 
-/* İçerik */
 .project-content {
   padding-top: 50px;
   padding-bottom: 50px;
@@ -84,20 +80,17 @@ body {
     font-size: 1.5rem;
 }
 
-/* Paragraflar */
 .project-content p {
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
 }
 
-/* Listeler */
 .project-content ul, .project-content ol {
   margin-bottom: 1rem;
   padding-left: 1.5rem;
 }
 
-/* Screenshots */
 .project-content img {
   max-width: 100%;
   height: auto;
@@ -106,7 +99,6 @@ body {
   margin-bottom: 20px;
 }
 
-/* Responsive grid için container img */
 @media (min-width: 768px) {
   .project-content img {
     max-width: 80%;
@@ -124,7 +116,6 @@ body {
     font-size: 1rem;
   }
 }
-/* Navbar Neon Effect */
 .navbar-brand {
     font-family: 'Arial', sans-serif; /* Neon font */
     color: #fff;

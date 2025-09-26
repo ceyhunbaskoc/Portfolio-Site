@@ -31,10 +31,8 @@ app.post('/add-project', upload.single('image'), (req, res) => {
         fs.writeFileSync(imagePath, imageBuffer);
     }
 
-    // Detay HTML sayfası oluştur
     let template = fs.readFileSync(path.join(__dirname, 'html/project-template.html'), 'utf-8');
 
-    // GitHub & Itch.io butonlarını dinamik üret
     const githubButton = github
         ? `<a href="${github}" target="_blank" class="btn btn-dark me-2">GitHub</a>`
         : '';
@@ -51,7 +49,6 @@ app.post('/add-project', upload.single('image'), (req, res) => {
         .replace(/{{GITHUB_BUTTON}}/g, githubButton)
         .replace(/{{ITCH_BUTTON}}/g, itchButton);
 
-    // Detay HTML sayfası "html" klasörüne kaydedilecek
     const htmlDir = path.join(__dirname, 'html');
     if (!fs.existsSync(htmlDir)) {
         fs.mkdirSync(htmlDir);
@@ -69,7 +66,7 @@ app.post('/add-project', upload.single('image'), (req, res) => {
         shortDesc,
         longDesc,
         image: `img/projects/${imageName}`,
-        htmlFile: `html/${htmlFile}`,   // ✅ burada önemli
+        htmlFile: `html/${htmlFile}`,
         github,
         itch
     });
