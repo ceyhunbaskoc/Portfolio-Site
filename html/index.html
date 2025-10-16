@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="index.html">Main Page</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about-work">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="/projects.html">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
@@ -31,30 +31,55 @@
     </nav>
 
     <!-- Hero -->
-<header class="hero d-flex align-items-center text-center text-white">
-    <div class="container">
-        <p class="cursor typewriter-animation">Hi! I'm Ceyhun</p>
-        <p class="lead">Game Developer</p>
-        <div class="mt-4">
-            <a href="/projects.html" class="btn btn-gradient btn-lg me-3">Projects</a>
-            <a href="#about" class="btn btn-outline-light btn-lg">More</a>
+    <header class="hero d-flex align-items-center text-center text-white">
+        <div class="container">
+            <p class="cursor typewriter-animation">Hi! I'm Ceyhun</p>
+            <p class="lead">Game Developer</p>
+            <div class="mt-4">
+                <a href="/projects.html" class="btn btn-gradient btn-lg me-3">Projects</a>
+                <a href="#about-work" class="btn btn-outline-light btn-lg">More</a>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
-    <!-- About -->
-    <section id="about" class="py-5">
+    <!-- About + Work Experiences + Skills + Video -->
+    <section id="about-work" class="py-5" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/img/mainPage/background.jpg') center/cover no-repeat;">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-5">
-                    <img src="/img/mainPage/me.jpg" alt="Benim Fotoğrafım" class="img-fluid rounded shadow">
+                <!-- Fotoğraf -->
+                <div class="col-md-5 text-center">
+                    <img src="/img/mainPage/me.jpg" alt="Benim Fotoğrafım" class="img-fluid rounded shadow mb-3">
                 </div>
-                <div class="col-md-7">
+                <!-- Metinler -->
+                <div class="col-md-7 text-white text-container">
+                    <!-- About -->
                     <h2>About</h2>
-                    <p>I'm a software developer with a passion for game development. I love designing game mechanics,
-                        combining art and technology. I develop projects especially with Unity and I'm always open to
-                        learn new things.</p>
-                    <h4>Skills</h4>
+                    <p>I'm a software developer with a passion for game development. I love designing game mechanics, combining art and technology. I develop projects especially with Unity and I'm always open to learn new things.</p>
+
+                    <!-- Work Experiences -->
+                    <h2 class="mt-4">W O R K &nbsp; E X P E R I E N C E S</h2>
+                    <div class="mb-3">
+                        <h4 class="fw-bold">Game Developer Intern</h4>
+                        <h5>UDO Games (July 2025 - August 2025)</h5>
+                        <ul>
+                            <li>Worked as part of a development team during a 1-month internship.</li>
+                            <li>Contributed to the creation of <strong>Jelly Fit</strong>, a 3D puzzle game.</li>
+                            <li>Responsible for gameplay mechanics: grid system, drag & drop, cell control, cutting mechanics.</li>
+                            <li>Developed sound manager and integrated animations.</li>
+                            <li>Gained experience in Unity (C#), team collaboration, and game development pipeline.</li>
+                        </ul>
+                    </div>
+                    <div class="mb-3">
+                        <h4 class="fw-bold">VR Developer (Part-Time)</h4>
+                        <h5>SDÜ Metaverse Studio (August 2025 - Present)</h5>
+                        <ul>
+                            <li>Developed various simulations using the Unity game engine.</li>
+                            <li>Worked in a team of four people at the Metaverse studio established by Süleyman Demirel University.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skills -->
+                    <h4 class="mt-4">Skills</h4>
                     <ul>
                         <li>Game Development (Unity)</li>
                         <li>C#</li>
@@ -62,7 +87,9 @@
                         <li>Java</li>
                         <li>Python</li>
                     </ul>
-                    <h4>Promotional Video</h4>
+
+                    <!-- Promotional Video -->
+                    <h4 class="mt-4">Promotional Video</h4>
                     <video class="w-100 rounded shadow" controls>
                         <source src="/video/mainPage/githubVideo.mp4" type="video/mp4">
                         Tarayıcınız video desteğini desteklemiyor.

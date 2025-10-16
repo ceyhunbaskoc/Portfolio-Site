@@ -2,6 +2,8 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
 }
 
 /* Navbar */
@@ -42,14 +44,62 @@ body {
   color: #fff;
 }
 
-/* About */
-#about ul {
-  list-style: none;
-  padding: 0;
+/* About + Work Experiences + Skills + Video */
+#about-work {
+    position: relative;
+    padding: 80px 0;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../img/mainPage/me.jpg') center/cover no-repeat;
 }
-#about ul li::before {
-  content: "✔ ";
-  color: #6f42c1;
+
+#about-work .text-container, #about-work .col-md-7 {
+    background: rgba(0,0,0,0.5); /* yarı transparan kutu */
+    padding: 30px;
+    border-radius: 10px;
+}
+
+#about-work img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+    margin-left: -20%;
+}
+
+#about-work h2 {
+    font-weight: bold;
+    color: #d633ff;
+    text-shadow: 2px 2px 10px rgba(255, 238, 0, 0.959);
+    margin-bottom: 2rem;
+}
+
+#about-work h4 {
+    color: #ffffff;
+    margin-top: 1rem;
+}
+
+#about-work h5 {
+    color: #fffb00;
+    margin-bottom: 0.5rem;
+}
+
+#about-work ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#about-work ul li::before {
+    content: "✔ ";
+    color: #6f42c1;
+    font-weight: bold;
+}
+
+#about-work ul li {
+    margin-bottom: 0.5rem;
+}
+
+#about-work video {
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 /* Contact */
@@ -57,9 +107,6 @@ body {
   background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
               url("../img/contact-bg.jpg") center/cover no-repeat;
 }
-
-/* Google Fonts */
-@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
 
 /* Cursor */
 .cursor{
@@ -91,24 +138,15 @@ body {
   to { border-right-color: transparent; }
 }
 
-/* Global */
-body { 
-    font-family: 'Anonymous Pro', monospace;
-}
-
 /* Navbar Neon Effect */
 .navbar-brand {
-    font-family: 'Arial', sans-serif; /* Neon font */
+    font-family: 'Arial', sans-serif; 
     color: #fff;
     text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
     animation: neonGlow 1.5s infinite alternate;
 }
 
 @keyframes neonGlow {
-    0% {
-        text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
-    }
-    100% {
-        text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 40px #00d4ff, 0 0 80px #00d4ff, 0 0 160px #00d4ff;
-    }
+    0% { text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e; }
+    100% { text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 40px #00d4ff, 0 0 80px #00d4ff, 0 0 160px #00d4ff; }
 }
