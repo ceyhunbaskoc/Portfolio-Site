@@ -5,6 +5,7 @@ import path from 'path';
 import { marked } from 'marked';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import sanitizeHtml from 'sanitize-html'; // 👈 yeni eklendi
 
 // ES modules'te __dirname yoktur
 const __filename = fileURLToPath(import.meta.url);
@@ -51,12 +52,27 @@ app.get('/:htmlFile', (req, res) => {
 
 // Proje ekleme
 app.post('/add-project', upload.single('image'), (req, res) => {
-    const { title, shortDesc, longDesc, htmlFile, github, itch } = req.body;
+    const { title, shortDesc, longDesc, htmlFile, github, itch, descType } = req.body; // 👈 descType eklendi
     const imageBuffer = req.file ? req.file.buffer : null;
     const imageName = req.file ? `${Date.now()}-${req.file.originalname}` : null;
 
-    // Markdown → HTML
-    const longDescHTML = marked.parse(longDesc || '');
+    // Açıklama türüne göre dönüştürme
+    let longDescHTML = '';
+    if (descType === 'markdown') {
+        longDescHTML = marked.parse(longDesc || '');
+    } else {
+        // Normal HTML olarak al — sanitize ederek güvenli hale getir
+        longDescHTML = sanitizeHtml(longDesc || '', {
+            allowedTags: [
+                'b', 'i', 'em', 'strong', 'p', 'br', 'ul', 'ol', 'li',
+                'a', 'h1', 'h2', 'h3', 'img', 'blockquote', 'pre', 'code'
+            ],
+            allowedAttributes: {
+                a: ['href', 'target'],
+                img: ['src', 'alt']
+            }
+        });
+    }
 
     // Resim kaydet
     if (imageBuffer) {
@@ -99,9 +115,10 @@ app.post('/add-project', upload.single('image'), (req, res) => {
         shortDesc,
         longDesc,
         image: `/img/projects/${imageName}`,
-        htmlFile: `/${htmlFile}`, // root path
+        htmlFile: `/${htmlFile}`,
         github,
-        itch
+        itch,
+        descType // kayıtta da saklayabiliriz
     });
     fs.writeFileSync(projectsFile, JSON.stringify(projects, null, 2));
 

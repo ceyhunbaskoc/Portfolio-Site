@@ -1,0 +1,133 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap');
+/* Arkaplan her yerde geçerli */
+body {
+  background-image: url("../img/project3/1.png");
+  background-repeat: repeat-y;
+  background-position: top center;
+  background-size: 100% auto;
+  font-family: 'Anonymous Pro', monospace;
+  color: #fff;
+}
+
+.custom-navbar {
+  background: rgba(0, 0, 0, 0.9);
+  padding: 15px 0;
+}
+.custom-navbar .nav-link {
+  color: #fff;
+  margin-left: 15px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-link.active {
+  color: #d633ff;
+}
+
+/* Üst kısım */
+.project-header {
+  min-height: 50vh;
+  padding-top: 80px;
+}
+.project-cover {
+  max-width: 100%;
+  width: 250px; /* Daha küçük, daha kontrollü boyut */
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border: 5px solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+  margin-bottom: 20px;
+}
+
+.project-header h1{
+    color: #d633ff;
+    font-size: 2.5rem;
+}
+.project-header p.lead {
+    font-size: 1.2rem;
+}
+
+.btn-outline-light {
+  border-width: 2px;
+  transition: all 0.3s;
+}
+.btn-outline-light:hover {
+  background-color: #d633ff;
+  color: #fff;
+  border-color: #d633ff;
+}
+
+.project-content {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.project-content h2, 
+.project-content h3 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+.project-content h2 {
+  color: #d633ff;
+  font-size: 2rem;
+  border-bottom: 2px solid #d633ff;
+  padding-bottom: 5px;
+}
+.project-content h3{
+    color: #ecdd00;
+    font-size: 1.5rem;
+}
+
+.project-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.project-content ul, .project-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.project-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .project-content img {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 576px) {
+  .project-cover {
+    width: 180px;
+  }
+  .project-header h1 {
+    font-size: 2rem;
+  }
+  .project-header p.lead {
+    font-size: 1rem;
+  }
+}
+.navbar-brand {
+    font-family: 'Arial', sans-serif; /* Neon font */
+    color: #fff;
+    text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+    animation: neonGlow 1.5s infinite alternate;
+}
+
+@keyframes neonGlow {
+    0% {
+        text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+    }
+    100% {
+        text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 40px #00d4ff, 0 0 80px #00d4ff, 0 0 160px #00d4ff;
+    }
+}

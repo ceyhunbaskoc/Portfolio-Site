@@ -7,6 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body { background-color: #121212; color: #fff; }
+    h2 { color: #d633ff; }
   </style>
 </head>
 <body>
@@ -25,8 +26,16 @@
   </div>
 
   <div class="mb-3">
-    <label>Uzun Açıklama (Markdown):</label>
+    <label>Uzun Açıklama:</label>
     <textarea class="form-control" id="longDesc" rows="6"></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label>Açıklama Türü:</label>
+    <select class="form-control" id="descType">
+      <option value="markdown" selected>Markdown (Varsayılan)</option>
+      <option value="html">Normal (HTML veya Düz Yazı)</option>
+    </select>
   </div>
 
   <div class="mb-3">
@@ -58,6 +67,7 @@ document.getElementById('addProjectBtn').addEventListener('click', async () => {
     const title = document.getElementById('title').value;
     const shortDesc = document.getElementById('shortDesc').value;
     const longDesc = document.getElementById('longDesc').value;
+    const descType = document.getElementById('descType').value; // 👈 yeni alan
     const htmlFile = document.getElementById('htmlFile').value;
     const github = document.getElementById('github').value;
     const itch = document.getElementById('itch').value;
@@ -70,6 +80,7 @@ document.getElementById('addProjectBtn').addEventListener('click', async () => {
     formData.append('title', title);
     formData.append('shortDesc', shortDesc);
     formData.append('longDesc', longDesc);
+    formData.append('descType', descType); // 👈 yeni
     formData.append('htmlFile', htmlFile);
     formData.append('github', github);
     formData.append('itch', itch);
@@ -78,8 +89,8 @@ document.getElementById('addProjectBtn').addEventListener('click', async () => {
     try {
         const res = await fetch('/add-project', { method: 'POST', body: formData });
         const data = await res.json();
-        if(data.success) alert('Proje eklendi!');
-        else alert('Hata oluştu.');
+        if(data.success) alert('✅ Proje başarıyla eklendi!');
+        else alert('⚠️ Hata oluştu.');
     } catch(err) {
         alert('Sunucu hatası: ' + err.message);
     }
